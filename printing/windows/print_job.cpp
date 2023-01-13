@@ -213,7 +213,7 @@ std::vector<Printer> PrintJob::listPrinters() {
         size > 0 && _tcsncmp(buffer[i].pPrinterName, defaultPrinter, size) == 0,
         (buffer[i].Status &
          (PRINTER_STATUS_NOT_AVAILABLE | PRINTER_STATUS_ERROR |
-          PRINTER_STATUS_OFFLINE | PRINTER_STATUS_PAUSED)) == 0});
+          PRINTER_STATUS_OFFLINE | PRINTER_STATUS_PAUSED)) == 0 && (buffer[i].Attributes & PRINTER_ATTRIBUTE_WORK_OFFLINE) == 0});
   }
 
   free(buffer);
